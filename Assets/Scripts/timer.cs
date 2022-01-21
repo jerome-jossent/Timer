@@ -57,26 +57,34 @@ public class timer : MonoBehaviour
         t_elapsed = 0;
     }
 
+    public void _SetMinutesSeconds(string val)
+    {
+        //"00:00"
+        string[] ms = val.Split(':');
+        _SetMinutes(ms[0]);
+        _SetSeconds(ms[1]);
+    }
+
     public void _SetMinutes(string val)
     {
-        if(val.Length==1)
-        {
-            changing_by_code = true;
+        changing_by_code = true;
+        if (val.Length == 1)
             if_min.text = "0" + val;
-            changing_by_code = false;
-        }
+        else
+            if_min.text = val;
+        changing_by_code = false;
 
         t_min = int.Parse(val);
         t_Total_sec = t_min * 60 + t_sec;
     }
     public void _SetSeconds(string val)
     {
+        changing_by_code = true;
         if (val.Length == 1)
-        {
-            changing_by_code = true;
             if_sec.text = "0" + val;
-            changing_by_code = false;
-        }
+        else
+            if_sec.text = val;
+        changing_by_code = false;
 
         t_sec = int.Parse(val);
         t_Total_sec = t_min * 60 + t_sec;
