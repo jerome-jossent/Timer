@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RandomRotation : MonoBehaviour
 {
+    Vector3 angleInit;
     public Vector3 Min;
     public Vector3 Max;
 
@@ -17,6 +18,7 @@ public class RandomRotation : MonoBehaviour
     void Start()
     {
         nextPosition_time = time_between_random;
+        angleInit = transform.localRotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -26,7 +28,7 @@ public class RandomRotation : MonoBehaviour
         {
             nextPosition_time += time_between_random;
 
-            Vector3 angles = new Vector3(Random.Range(Min.x, Max.x), Random.Range(Min.y, Max.y), Random.Range(Min.z, Max.z));
+            Vector3 angles = angleInit + new Vector3(Random.Range(Min.x, Max.x), Random.Range(Min.y, Max.y), Random.Range(Min.z, Max.z));
 
             _targetRotation = Quaternion.Euler(angles);
 

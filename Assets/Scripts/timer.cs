@@ -28,6 +28,7 @@ public class timer : MonoBehaviour
     public GameObject A;
     public GameObject B;
     public GameObject mobile;
+    public bool moveMobile;
 
     private void Start()
     {
@@ -53,7 +54,8 @@ public class timer : MonoBehaviour
 
     public void _Reset()
     {
-        mobile.transform.position = A.transform.position;
+        if(moveMobile)
+            mobile.transform.position = A.transform.position;
         t_elapsed = 0;
     }
 
@@ -107,8 +109,8 @@ public class timer : MonoBehaviour
                 }
                 else
                 {
-                    mobile.transform.position = B.transform.position;
-                    //_running = false;
+                    if (moveMobile)
+                        mobile.transform.position = B.transform.position;
                 }
             }
             else
@@ -131,7 +133,8 @@ public class timer : MonoBehaviour
                                          out float a_z, out float b_z);
                 float z = a_z * t_elapsed + b_z;
 
-                mobile.transform.position = new Vector3(x, y, z);
+                if (moveMobile)
+                    mobile.transform.position = new Vector3(x, y, z);
             }
         }
         DisplayTimeInfo();
