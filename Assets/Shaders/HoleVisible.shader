@@ -1,5 +1,5 @@
 Shader "Custom/HoleVisible"
-{
+{//https://www.reddit.com/r/Unity3D/comments/g14m68/how_to_make_in_5_steps_realistic_looking_holes/
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
